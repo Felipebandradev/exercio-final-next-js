@@ -2,3 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root{
+  --cor-primaria: #f2f2f2 ;
+  --cor-primaria-fundo: #bde7d5;
+  --cor-primaria-fundo-hover: #86b8a4 ;
+  --cor-secundaria-fundo: #4ba3c3;
+  --cor-secundaria-fundo-hover: #2f88a8;
+  --cor-secundaria: #e4e3f2;
+  --cor-secundaria-hover: #e2e2eb;
+  --valor-primario: 0.5rem;
+  --sombra-box: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #ededf7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+  margin: 1rem 0;
+  color: #262626;
+  background-color: #f7f7f7;
+  padding: 1rem;
+  box-shadow: var(--sombra-box);
+  border-radius: var(--borda-arredondada);
+}
+
+.limitador {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
