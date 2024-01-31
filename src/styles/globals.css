@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,18 +10,16 @@
   box-sizing: border-box;
 }
 
-:root{
-  --cor-primaria: #f2f2f2 ;
-  --cor-primaria-fundo: #bde7d5;
-  --cor-primaria-fundo-hover: #86b8a4 ;
+:root {
+  --cor-primaria: #f2f2f2;
+  --cor-primaria-fundo: #86b8a4;
+  --cor-primaria-fundo-hover: #66927f;
   --cor-secundaria-fundo: #4ba3c3;
   --cor-secundaria-fundo-hover: #2f88a8;
   --cor-secundaria: #e4e3f2;
   --cor-secundaria-hover: #e2e2eb;
   --valor-primario: 0.5rem;
   --sombra-box: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-
-
 }
 
 html {
@@ -33,6 +33,12 @@ body {
   background-color: #ededf7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fjalla One", sans-serif;
 }
 
 h2 {
