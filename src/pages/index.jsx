@@ -1,6 +1,5 @@
 
 import React, { useState } from "react";
-import { Pagination } from "@nextui-org/react";
 import serverApi from "./api/server";
 import styled from "styled-components";
 import Personagens from "@/components/Personagens";
@@ -8,7 +7,7 @@ import Personagens from "@/components/Personagens";
 
 export async function getStaticProps() {
   try {
-    const resposta = await fetch(`${serverApi}/character`);
+    const resposta = await fetch(`${serverApi}/character/?page=20`);
     const dados = await resposta.json();
 
     if (!resposta.ok) {
@@ -27,15 +26,18 @@ export async function getStaticProps() {
 
 export default function Home({dados}) {
   
-  const { results } = dados;
-  
+  const { results, info } = dados;
+  console.log(info);
+
+
+ 
   return (
     <>
       <h2>Boas Vindas: </h2>
 
-      <Personagens results={results} />
+      <Personagens results={results} info={info} />
 
-      <Pagination isCompact showControls total={10} initialPage={1} />
+ 
     </>
   );
 }

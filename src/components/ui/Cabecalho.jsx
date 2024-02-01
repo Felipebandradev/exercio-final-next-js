@@ -19,6 +19,7 @@ const StyledHeader = styled.header`
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 0.5rem;
     
 
     &:hover,
