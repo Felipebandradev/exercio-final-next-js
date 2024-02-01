@@ -15,6 +15,7 @@ const StyledListaPersonagem = styled.section`
 
     & img {
       border-radius: var(--borda-arredondada);
+      border: gray solid 10px;
     }
 
     & p {
