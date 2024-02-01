@@ -20,6 +20,7 @@
   --cor-secundaria-hover: #e2e2eb;
   --valor-primario: 0.5rem;
   --sombra-box: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --borda-arredondada: 0.5rem;
 }
 
 html {

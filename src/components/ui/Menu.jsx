@@ -3,11 +3,12 @@ import styled from "styled-components"
 
 const StyledMenu = styled.nav`
 
-display: flex;
-justify-content: center;
-align-items: center;
+  /* Mobile First */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-a {
+  a {
     text-decoration: none;
     background-color: var(--cor-primaria-fundo);
     color: var(--cor-primaria);
@@ -25,7 +26,6 @@ a {
     &:hover,
     &:focus {
       background-color: var(--cor-primaria-fundo-hover);
-      color: #f7f7f7f7;
     }
 
     @media screen and (min-width: 700px) {
@@ -33,6 +33,9 @@ a {
       padding-right: 2rem;
     }
 
+    &.ativo {
+      background-color: #453c63;
+    }
   }
 
 `;
