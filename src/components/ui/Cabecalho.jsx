@@ -20,7 +20,6 @@ const StyledHeader = styled.header`
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
-    
 
     &:hover,
     &:focus {
@@ -34,7 +33,6 @@ const StyledHeader = styled.header`
     align-items: center;
     flex-direction: column;
     padding-bottom: 0.5rem;
-    
   }
 
   @media screen and (min-width: 700px) {

@@ -11,13 +11,13 @@
 }
 
 :root {
-  --cor-primaria: #f2f2f2;
-  --cor-primaria-fundo: #86b8a4;
-  --cor-primaria-fundo-hover: #66927f;
-  --cor-secundaria-fundo: #4ba3c3;
+  --cor-primaria: #060906;
+  --cor-primaria-fundo: #01fe1c;
+  --cor-primaria-fundo-hover: #56b635;
+  --cor-secundaria-fundo: #95c7dd;
   --cor-secundaria-fundo-hover: #2f88a8;
-  --cor-secundaria: #e4e3f2;
-  --cor-secundaria-hover: #e2e2eb;
+  --cor-secundaria: #d3d1c3;
+  --cor-secundaria-hover: #494949;
   --valor-primario: 0.5rem;
   --sombra-box: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   --borda-arredondada: 0.5rem;

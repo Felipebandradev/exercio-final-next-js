@@ -9,4 +9,9 @@ const StyledContainer = styled.div`
   box-shadow: var(--sombra-box);
   border-radius: var(--borda-arredondada);
   padding: 1rem;
+
+  h3,
+  p {
+    margin: var(--valor-primario);
+  }
 `;

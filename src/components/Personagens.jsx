@@ -1,8 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 const StyledListaPersonagem = styled.section`
-
-  img{
+  img {
     max-width: 100%;
   }
 
@@ -13,6 +12,14 @@ const StyledListaPersonagem = styled.section`
     border-radius: var(--borda-arredondada);
     color: var(--cor-primaria);
     box-shadow: var(--sombra-box);
+    border: solid var(--cor-primaria) 1px;
+
+    & h3 {
+      text-align: center;
+      background-color: #bde2a0;
+      border-radius: var(--borda-arredondada);
+      padding: var(--valor-primario);
+    }
 
     & img {
       width: 150px;
@@ -21,11 +28,21 @@ const StyledListaPersonagem = styled.section`
     }
 
     & p {
-      word-break:  break-word;;
+      word-break: break-word;
 
       & > img {
         text-align: center;
       }
+    }
+    & a {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--cor-secundaria-fundo-hover);
     }
   }
 
@@ -36,20 +53,14 @@ const StyledListaPersonagem = styled.section`
     flex-wrap: wrap;
     article {
       width: 45%;
-      & > a{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+      & > a {
         gap: var(--valor-primario);
       }
     }
   }
-
 `;
 
 export default function Personagens({ results, info }) {
-
-  
   return (
     <StyledListaPersonagem>
       {results.map((character) => {
@@ -60,7 +71,8 @@ export default function Personagens({ results, info }) {
                 <img src={character.image} alt={character.name} />
               </p>
               <div>
-                <p>Nome: {character.name}</p>
+                <h3>{character.name}</h3>
+                <hr />
                 <p>Aparições: {character.episode.length}</p>
                 <p>Especie: {character.species}</p>
               </div>
