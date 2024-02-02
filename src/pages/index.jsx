@@ -8,7 +8,7 @@ import Head from "next/head";
 
 export async function getStaticProps() {
   try {
-    const resposta = await fetch(`${serverApi}/character/?page=20`);
+    const resposta = await fetch(`${serverApi}/character/?page=41`);
     const dados = await resposta.json();
 
     if (!resposta.ok) {
