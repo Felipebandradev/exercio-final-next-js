@@ -6,6 +6,7 @@ import { FaMapMarkerAlt, FaHeart } from "react-icons/fa";
 import { GiPlanetConquest, GiFamilyTree } from "react-icons/gi";
 import { MdOndemandVideo } from "react-icons/md";
 import { FaTransgender } from "react-icons/fa6";
+import Head from "next/head";
 
 const StyledInfo = styled.section`
   img {
@@ -82,8 +83,14 @@ export async function getStaticPaths() {
 }
 
 export default function Character({ personagem }) {
+
+  const titulo = `${personagem.name} - Rick Morty Api `
+
   return (
     <>
+    <Head>
+      <title>{titulo}</title>
+    </Head>
       <h2>Personagem</h2>
       <StyledInfo>
         <p
