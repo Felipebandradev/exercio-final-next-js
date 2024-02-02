@@ -3,6 +3,7 @@ import serverApi from "./api/server";
 import styled from "styled-components";
 import Head from "next/head";
 import ListaEpisodios from "@/components/ListaEpisodios";
+import Container from "@/components/ui/Container";
 
 export async function getStaticProps() {
   try {
@@ -29,11 +30,17 @@ export default function Mundos({ dados }) {
   return (
     <>
       <Head>
-        <title> Episodios - Ricky Morty Api</title>
+        <title> Episódios - Ricky Morty Api</title>
       </Head>
-      <h2>Boas Vindas: à Episodios </h2>
+      <h2>Boas Vindas: à Episódios </h2>
+
+      <Container>
+      <h3>Conheça Alguns Episódios da Série </h3>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus non, nisi perspiciatis, quas alias doloremque accusantium, illo qui ipsam cumque dolore! Aliquam molestias maiores corporis voluptatibus similique, libero commodi, minus veniam ad aperiam dignissimos quisquam rerum laboriosam tempora laborum impedit, nesciunt hic fuga dolorum id sunt incidunt inventore facere! Quod!</p>
 
       <ListaEpisodios resultados={results} />
+      </Container>
 
     
     </>

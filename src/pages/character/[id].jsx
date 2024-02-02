@@ -1,8 +1,52 @@
 import Container from "@/components/ui/Container";
 import serverApi from "../api/server";
 import styled from "styled-components";
+import { IoReaderOutline } from "react-icons/io5";
+import { FaMapMarkerAlt, FaHeart } from "react-icons/fa";
+import { GiPlanetConquest, GiFamilyTree } from "react-icons/gi";
+import { MdOndemandVideo } from "react-icons/md";
+import { FaTransgender } from "react-icons/fa6";
 
-const StyledInfo = styled.div``;
+const StyledInfo = styled.section`
+  img {
+    max-width: 100%;
+    clip-path: circle(50% at 50% 50%);
+    box-shadow: var(--sombra-box);
+  }
+
+  h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin: var(--valor-primario);
+    padding: var(--valor-primario) 1rem;
+    background-color: var(--cor-secundaria-fundo);
+    border-radius: var(--borda-arredondada);
+  }
+
+  div {
+    padding: var(--valor-primario) 1rem;
+    margin: var(--valor-primario);
+  }
+
+  hr {
+    border: 0.1rem solid #333333;
+    border-radius: 5px;
+    margin: var(--valor-primario);
+    width: 100%;
+  }
+
+  @media screen and (min-width: 500px) {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & div {
+        width: 50%;
+      }
+    }
+  }
+`;
 
 export async function getStaticProps({ params }) {
   const { id } = params;
@@ -41,27 +85,79 @@ export default function Character({ personagem }) {
   return (
     <>
       <h2>Personagem</h2>
-      <Container>
-        <p>
-          <img src={personagem.image} />
+      <StyledInfo>
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingBottom: "1rem",
+          }}
+        >
+          <img src={personagem.image} alt={personagem.name} />
         </p>
-        
-        <StyledInfo>
-        <h3>{personagem.name}</h3>
 
-        <ul>
-            <li>{personagem.status}</li>
-            <li>{personagem.gender}</li>
-            <li>{personagem.origin.name}</li>
-            <li>{personagem.location.name}</li>
-            <li>{personagem.type}</li>
-            <li>{personagem.episode.length}</li>
-        </ul>
+        <Container>
+          <h3>
+            <IoReaderOutline /> {personagem.name}
+          </h3>
 
-</StyledInfo>
-
-
-      </Container>
+          <div className="container">
+            <div>
+              <div>
+                <p>
+                  <GiFamilyTree />
+                  <b>Espécie: </b>
+                </p>
+                <p>{personagem.species}</p>
+                <hr />
+              </div>
+              <div>
+                <p>
+                  <FaHeart />
+                  <b>Status: </b>
+                </p>
+                <p>{personagem.status}</p>
+                <hr />
+              </div>
+              <div>
+                <p>
+                  <FaTransgender />
+                  <b>Genêro: </b>
+                </p>
+                <p>{personagem.gender}</p>
+                <hr />
+              </div>
+            </div>
+            <div>
+              <div>
+                <p>
+                  <GiPlanetConquest />
+                  <b>Origem: </b>
+                </p>
+                <p>{personagem.origin.name}</p>
+                <hr />
+              </div>
+              <div>
+                <p>
+                  <FaMapMarkerAlt />
+                  <b>Localização: </b>
+                </p>
+                <p>{personagem.location.name}</p>
+                <hr />
+              </div>
+              <div>
+                <p>
+                  <MdOndemandVideo />
+                  <b>Aprições: </b>
+                </p>
+                <p>{personagem.episode.length}</p>
+                <hr />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </StyledInfo>
     </>
   );
 }

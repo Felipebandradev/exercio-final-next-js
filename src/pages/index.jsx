@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import serverApi from "./api/server";
-import styled from "styled-components";
 import Personagens from "@/components/Personagens";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
@@ -8,7 +7,7 @@ import Head from "next/head";
 
 export async function getStaticProps() {
   try {
-    const resposta = await fetch(`${serverApi}/character/?page=41`);
+    const resposta = await fetch(`${serverApi}/character/?page=1`);
     const dados = await resposta.json();
 
     if (!resposta.ok) {
