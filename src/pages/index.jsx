@@ -11,7 +11,7 @@ export async function getStaticProps() {
     const dados = await resposta.json();
 
     if (!resposta.ok) {
-      throw new Error(`Erro: ${resposta.staus} - ${resposta.statusText}`);
+      throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
     }
 
     return {
@@ -26,6 +26,45 @@ export async function getStaticProps() {
 export default function Home({ dados }) {
   const { results, info } = dados;
   console.log(info);
+
+  const [PaginaApi, setPaginaApi] = useState(results); // state criado pra coletar o array results
+  const [InfoApi, setInfoApi] = useState(info); // state criado pra coletar o array info
+
+  // Função para buscar os dados de uma página específica
+  const fetchPersonagem = async (url) => {
+    try {
+      const resposta = await fetch(url); // Faz uma requisição à API usando a URL fornecida
+      const dados = await resposta.json(); // Converte a resposta da API para JSON
+
+      if (!resposta.ok) {
+        throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`); // Lança um erro se a resposta da API não estiver ok
+      }
+
+      // Atualiza os dados com os novos dados buscados
+      setPaginaApi(dados.results);
+      setInfoApi(dados.info);
+    } catch (error) {
+      console.error("Deu ruim: " + error.message); // Log de erro caso ocorra algum problema
+    }
+  };
+
+  // Função para lidar com o clique no botão de próxima página
+  const ProximaPagina = async () => {
+    if (InfoApi.next) {
+      // Verifica se há uma próxima página disponível
+      const url = InfoApi.next; // Obtém a URL da próxima página
+      await fetchPersonagem(url); // Busca os dados da próxima página
+    }
+  };
+
+  // Função para lidar com o clique no botão de página anterior
+  const PaginaAnterior = async () => {
+    if (InfoApi.prev) {
+      // Verifica se há uma página anterior disponível
+      const url = InfoApi.prev; // Obtém a URL da página anterior
+      await fetchPersonagem(url); // Busca os dados da página anterior
+    }
+  };
 
   return (
     <>
@@ -60,7 +99,19 @@ export default function Home({ dados }) {
           laboriosam veritatis tempore recusandae? Molestiae, aspernatur
           consequatur.
         </p>
-        <Personagens results={results} info={info} />
+        
+        
+        <Personagens results={PaginaApi} info={InfoApi} />
+        
+        <div className="botaopag" style={{ display: "flex", justifyContent: "space-between" }}>
+          <button disabled={!InfoApi.prev} onClick={PaginaAnterior}>
+            Página Anterior
+          </button>
+          <button disabled={!InfoApi.next} onClick={ProximaPagina}>
+            Próxima Página
+          </button>
+        </div>
+        
       </Container>
     </>
   );
