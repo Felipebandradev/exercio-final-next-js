@@ -61,7 +61,7 @@ const StyledListaPersonagem = styled.section`
   }
 `;
 
-export default function Personagens({ results, info }) {
+export default function ListaDePersonagens({ results, info }) {
   return (
     <StyledListaPersonagem>
       {results.map((character) => {

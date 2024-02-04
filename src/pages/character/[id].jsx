@@ -172,7 +172,7 @@ export default function Character({ personagem }) {
               </div>
             </div>
           </div>
-          <Link href="/">
+          <Link href="/personagens">
             Voltar
           </Link>
         </Container>

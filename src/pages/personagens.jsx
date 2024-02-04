@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import serverApi from "./api/server";
-import Personagens from "@/components/Personagens";
 import Container from "@/components/ui/Container";
 import Head from "next/head";
 import styled from "styled-components";
+import ListaDePersonagens from "@/components/ListaDePersonagens";
 
 const StyledPaginacao = styled.div`
   display: flex;
@@ -100,7 +100,7 @@ export default function PersonagemHome({ dados }) {
           consequatur.
         </p>
 
-        <Personagens results={PaginaApi} info={InfoApi} />
+        <ListaDePersonagens results={PaginaApi} info={InfoApi} />
 
         <StyledPaginacao>
           <button disabled={!InfoApi.prev} onClick={PaginaAnterior}>
