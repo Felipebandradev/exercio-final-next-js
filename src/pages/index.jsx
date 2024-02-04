@@ -1,93 +1,35 @@
-import React, { useState } from "react";
-import serverApi from "./api/server";
-import Personagens from "@/components/Personagens";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Head from "next/head";
 import styled from "styled-components";
+import { IoPersonSharp } from "react-icons/io5";
+import { GiPlanetConquest } from "react-icons/gi";
+import { MdOndemandVideo } from "react-icons/md";
+import Link from "next/link";
 
-const StyledPaginacao = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+const StyledHome = styled.div`
+  img {
+    max-width: 100%;
+  }
 
-  button {
-    background-color: var(--cor-primaria-fundo);
-    color: var(--cor-primaria);
-    padding: 0.5rem 1rem;
-    border-radius: var(--borda-arredondada);
-    &:hover {
-      background-color: var(--cor-primaria-fundo-hover);
-    }
+  a {
+    padding: var(--valor-primario) 1rem;
+    margin: var(--valor-primario);
+  }
+
+  iframe {
+    max-width: 100%;
+    width: 800px;
   }
 `;
 
-export async function getStaticProps() {
-  try {
-    const resposta = await fetch(`${serverApi}/character/?page=1`);
-    const dados = await resposta.json();
-
-    if (!resposta.ok) {
-      throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`);
-    }
-
-    return {
-      props: { dados },
-    };
-  } catch (error) {
-    console.error("Deu ruim: " + error.message);
-    return { notFound: true };
-  }
-}
-
-export default function Home({ dados }) {
-  const { results, info } = dados;
-
-  const [PaginaApi, setPaginaApi] = useState(results); // state criado pra coletar o array results
-  const [InfoApi, setInfoApi] = useState(info); // state criado pra coletar o array info
-
-  // Função para buscar os dados de uma página específica
-  const fetchPersonagem = async (url) => {
-    try {
-      const resposta = await fetch(url); // Faz uma requisição à API usando a URL fornecida
-      const dados = await resposta.json(); // Converte a resposta da API para JSON
-
-      if (!resposta.ok) {
-        throw new Error(`Erro: ${resposta.status} - ${resposta.statusText}`); // Lança um erro se a resposta da API não estiver ok
-      }
-
-      // Atualiza os dados com os novos dados buscados
-      setPaginaApi(dados.results);
-      setInfoApi(dados.info);
-    } catch (error) {
-      console.error("Deu ruim: " + error.message); // Log de erro caso ocorra algum problema
-    }
-  };
-
-  // Função para lidar com o clique no botão de próxima página
-  const ProximaPagina = async () => {
-    if (InfoApi.next) {
-      // Verifica se há uma próxima página disponível
-      const url = InfoApi.next; // Obtém a URL da próxima página
-      await fetchPersonagem(url); // Busca os dados da próxima página
-    }
-  };
-
-  // Função para lidar com o clique no botão de página anterior
-  const PaginaAnterior = async () => {
-    if (InfoApi.prev) {
-      // Verifica se há uma página anterior disponível
-      const url = InfoApi.prev; // Obtém a URL da página anterior
-      await fetchPersonagem(url); // Busca os dados da página anterior
-    }
-  };
-
+export default function Home() {
   return (
-    <>
+    <StyledHome>
       <Head>
         <title>Rick Morty Api </title>
       </Head>
-      <h2>Boas Vindas: à personagens</h2>
+      <h2>Boas Vindas: Rick Morty Api</h2>
 
       <p
         style={{
@@ -105,7 +47,7 @@ export default function Home({ dados }) {
         />
       </p>
       <Container>
-        <h3>Conheça os Personagens da série</h3>
+        <h3>Conheça esse site feito com Rick Morty Api</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
           perspiciatis recusandae error hic esse illum enim aspernatur cumque,
@@ -116,17 +58,76 @@ export default function Home({ dados }) {
           consequatur.
         </p>
 
-        <Personagens results={PaginaApi} info={InfoApi} />
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingBottom: "1rem",
+          }}
+        >
+          <Image
+            src="/images/rick-morty-home.webp"
+            width={450}
+            height={450}
+            alt="Rick and Morty"
+          />
+        </p>
 
-        <StyledPaginacao>
-          <button disabled={!InfoApi.prev} onClick={PaginaAnterior}>
-            Página Anterior
-          </button>
-          <button disabled={!InfoApi.next} onClick={ProximaPagina}>
-            Próxima Página
-          </button>
-        </StyledPaginacao>
+        <h3>Explore: </h3>
+
+        <Link href="/personagens">
+          <div>
+            <IoPersonSharp />
+            <p>Personagens</p>
+          </div>
+        </Link>
+        <hr />
+        <Link href="/mundos">
+          <div>
+            <p>
+              <GiPlanetConquest />
+              Mundos
+            </p>
+          </div>
+        </Link>
+        <hr />
+        <Link href="/episodios">
+          <div>
+            <p>
+              <MdOndemandVideo />
+              Episódios
+            </p>
+          </div>
+        </Link>
+
+        <h3>Conhecendo a Animação: </h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis a
+          voluptas reprehenderit molestiae aut ratione necessitatibus quidem
+          voluptatum consectetur vero doloremque, aliquam, totam deserunt
+          cupiditate itaque voluptatibus omnis soluta tenetur! Animi et libero,
+          ipsa eaque temporibus dolores commodi nesciunt dolorem iusto,
+          consectetur ullam ratione eos delectus esse optio doloremque alias!
+        </p>
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingBottom: "1rem",
+          }}
+        >
+          <iframe
+            height="315"
+            src="https://www.youtube.com/embed/Dsh6bJI20OE?si=wURJ3nDdrNbXSEtK"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </p>
       </Container>
-    </>
+    </StyledHome>
   );
 }

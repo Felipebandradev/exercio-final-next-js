@@ -1,8 +1,7 @@
 import Link from "next/link";
-import styled from "styled-components"
+import styled from "styled-components";
 
 const StyledMenu = styled.nav`
-
   /* Mobile First */
   display: flex;
   justify-content: center;
@@ -32,18 +31,16 @@ const StyledMenu = styled.nav`
       padding-left: 2rem;
       padding-right: 2rem;
     }
-
-    &.ativo {
-      background-color: #453c63;
-    }
   }
-
 `;
 
-export default function Menu(){
-    return <StyledMenu>
-        <Link href="/">Personagens</Link>
-        <Link href="/mundos">Mundos</Link>
-        <Link href="/episodios">Episodios</Link>
+export default function Menu() {
+  return (
+    <StyledMenu>
+      <Link href="/">Início</Link>
+      <Link href="/personagens">Personagens</Link>
+      <Link href="/mundos">Mundos</Link>
+      <Link href="/episodios">Episodios</Link>
     </StyledMenu>
+  );
 }
