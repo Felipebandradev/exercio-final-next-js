@@ -11,6 +11,8 @@ export default function Document() {
           sizes="360x360"
         />
         <meta name="author" content="Felipe Barbosa Brito de Andrade" />
+        <meta name="description" content="site feito para fins estudantis" />
+
       </Head>
       <body>
         <Main />
