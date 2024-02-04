@@ -4,6 +4,23 @@ import Personagens from "@/components/Personagens";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Head from "next/head";
+import styled from "styled-components";
+
+const StyledPaginacao = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    background-color: var(--cor-primaria-fundo);
+    color: var(--cor-primaria);
+    padding: 0.5rem 1rem;
+    border-radius: var(--borda-arredondada);
+    &:hover {
+      background-color: var(--cor-primaria-fundo-hover);
+    }
+  }
+`;
 
 export async function getStaticProps() {
   try {
@@ -25,7 +42,6 @@ export async function getStaticProps() {
 
 export default function Home({ dados }) {
   const { results, info } = dados;
-  console.log(info);
 
   const [PaginaApi, setPaginaApi] = useState(results); // state criado pra coletar o array results
   const [InfoApi, setInfoApi] = useState(info); // state criado pra coletar o array info
@@ -99,19 +115,17 @@ export default function Home({ dados }) {
           laboriosam veritatis tempore recusandae? Molestiae, aspernatur
           consequatur.
         </p>
-        
-        
+
         <Personagens results={PaginaApi} info={InfoApi} />
-        
-        <div className="botaopag" style={{ display: "flex", justifyContent: "space-between" }}>
+
+        <StyledPaginacao>
           <button disabled={!InfoApi.prev} onClick={PaginaAnterior}>
             Página Anterior
           </button>
           <button disabled={!InfoApi.next} onClick={ProximaPagina}>
             Próxima Página
           </button>
-        </div>
-        
+        </StyledPaginacao>
       </Container>
     </>
   );

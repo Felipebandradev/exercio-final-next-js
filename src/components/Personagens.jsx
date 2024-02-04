@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TbHandClick } from "react-icons/tb";
 import styled from "styled-components";
 const StyledListaPersonagem = styled.section`
   img {
@@ -76,6 +77,9 @@ export default function Personagens({ results, info }) {
                 <p>Aparições: {character.episode.length}</p>
                 <p>Especie: {character.species}</p>
               </div>
+            </Link>
+            <Link href={`/character/${character.id}`}>
+              Ler Mais <TbHandClick />
             </Link>
           </article>
         );

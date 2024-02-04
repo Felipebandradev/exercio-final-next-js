@@ -7,6 +7,7 @@ import { GiPlanetConquest, GiFamilyTree } from "react-icons/gi";
 import { MdOndemandVideo } from "react-icons/md";
 import { FaTransgender } from "react-icons/fa6";
 import Head from "next/head";
+import Link from "next/link";
 
 const StyledInfo = styled.section`
   img {
@@ -36,6 +37,16 @@ const StyledInfo = styled.section`
     width: 100%;
   }
 
+  a {
+    text-decoration: none;
+    background-color: var(--cor-primaria-fundo);
+    color: var(--cor-primaria);
+    padding: 0.5rem 1rem;
+    border-radius: var(--borda-arredondada);
+    &:hover {
+      background-color: var(--cor-primaria-fundo-hover);
+    }
+  }
   @media screen and (min-width: 500px) {
     .container {
       display: flex;
@@ -60,7 +71,6 @@ export async function getStaticProps({ params }) {
     }
     const dados = await resposta.json();
 
-    console.log(dados);
 
     return {
       props: {
@@ -83,14 +93,13 @@ export async function getStaticPaths() {
 }
 
 export default function Character({ personagem }) {
-
-  const titulo = `${personagem.name} - Rick Morty Api `
+  const titulo = `${personagem.name} - Rick Morty Api `;
 
   return (
     <>
-    <Head>
-      <title>{titulo}</title>
-    </Head>
+      <Head>
+        <title>{titulo}</title>
+      </Head>
       <h2>Personagem</h2>
       <StyledInfo>
         <p
@@ -163,6 +172,9 @@ export default function Character({ personagem }) {
               </div>
             </div>
           </div>
+          <Link href="/">
+            Voltar
+          </Link>
         </Container>
       </StyledInfo>
     </>

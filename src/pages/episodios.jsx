@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import serverApi from "./api/server";
-import styled from "styled-components";
 import Head from "next/head";
 import ListaEpisodios from "@/components/ListaEpisodios";
 import Container from "@/components/ui/Container";
@@ -25,7 +24,6 @@ export async function getStaticProps() {
 
 export default function Mundos({ dados }) {
   const { results, info } = dados;
-  console.log(info);
 
   return (
     <>
