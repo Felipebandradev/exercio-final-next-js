@@ -30,7 +30,6 @@ article{
     &:hover,
     &:focus {
       background-color: var(--cor-secundaria-fundo-hover);
-      cursor: pointer;
     }
 
 
