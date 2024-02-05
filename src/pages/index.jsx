@@ -67,7 +67,7 @@ export default function Home() {
           }}
         >
           <Image
-            src="/images/rick-morty-home.webp"
+            src="/images/rick-morty-home.png"
             width={450}
             height={450}
             alt="Rick and Morty"
