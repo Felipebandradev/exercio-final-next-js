@@ -8,6 +8,7 @@ import { MdOndemandVideo } from "react-icons/md";
 import { FaTransgender } from "react-icons/fa6";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 const StyledInfo = styled.section`
   img {
@@ -71,7 +72,6 @@ export async function getStaticProps({ params }) {
     }
     const dados = await resposta.json();
 
-
     return {
       props: {
         personagem: dados,
@@ -92,8 +92,13 @@ export async function getStaticPaths() {
   };
 }
 
+const imageLoader = ({ src, width, quality }) => {
+  return `https://picsum.photos/300`;
+};
+
 export default function Character({ personagem }) {
   const titulo = `${personagem.name} - Rick Morty Api `;
+  console.log(personagem.image);
 
   return (
     <>
@@ -111,6 +116,12 @@ export default function Character({ personagem }) {
           }}
         >
           <img src={personagem.image} alt={personagem.name} />
+          {/* <Image
+            src={personagem.image}
+            alt={personagem.name}
+            width={300}
+            height={300}
+          /> */}
         </p>
 
         <Container>
@@ -172,9 +183,7 @@ export default function Character({ personagem }) {
               </div>
             </div>
           </div>
-          <Link href="/personagens">
-            Voltar
-          </Link>
+          <Link href="/personagens">Voltar</Link>
         </Container>
       </StyledInfo>
     </>
