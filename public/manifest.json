@@ -1,0 +1,19 @@
+{
+  "short_name": "Rick Morty - Felipe Barbos",
+  "name": "Rick Morty API",
+  "description": "Pwa Criada para fins estudantis usando Next.js",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "type": "image/png",
+      "sizes": "360x360"
+    }
+  ],
+  "start_url": "/",
+  "scope": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "any",
+  "lang": "pt-br"
+}
