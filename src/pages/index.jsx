@@ -10,6 +10,7 @@ import Link from "next/link";
 const StyledHome = styled.div`
   img {
     max-width: 100%;
+    padding-bottom: 1rem;
   }
 
   a {
@@ -20,6 +21,16 @@ const StyledHome = styled.div`
   iframe {
     max-width: 100%;
     width: 800px;
+    height: 315px;
+    margin: var(--valor-primario);
+    padding: var(--valor-primario) 1rem;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
 `;
 
@@ -31,14 +42,7 @@ export default function Home() {
       </Head>
       <h2>Boas Vindas: Rick Morty Api</h2>
 
-      <p
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          paddingBottom: "1rem",
-        }}
-      >
+      <p>
         <Image
           src="/images/Rick_and_Morty.png"
           width={650}
@@ -58,14 +62,7 @@ export default function Home() {
           consequatur.
         </p>
 
-        <p
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingBottom: "1rem",
-          }}
-        >
+        <p>
           <Image
             src="/images/rick-morty-home.png"
             width={450}
@@ -78,8 +75,9 @@ export default function Home() {
 
         <Link href="/personagens">
           <div>
-            <IoPersonSharp />
-            <p>Personagens</p>
+            <p>
+              <IoPersonSharp /> Personagens
+            </p>
           </div>
         </Link>
         <hr />
@@ -110,16 +108,8 @@ export default function Home() {
           ipsa eaque temporibus dolores commodi nesciunt dolorem iusto,
           consectetur ullam ratione eos delectus esse optio doloremque alias!
         </p>
-        <p
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingBottom: "1rem",
-          }}
-        >
+        <p>
           <iframe
-            height="315"
             src="https://www.youtube.com/embed/Dsh6bJI20OE?si=wURJ3nDdrNbXSEtK"
             title="YouTube video player"
             frameborder="0"
