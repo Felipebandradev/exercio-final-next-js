@@ -103,12 +103,19 @@ export default function PersonagemHome({ dados }) {
         <ListaDePersonagens results={PaginaApi} info={InfoApi} />
 
         <StyledPaginacao>
-          <button disabled={!InfoApi.prev} onClick={PaginaAnterior}>
-            Página Anterior
-          </button>
-          <button disabled={!InfoApi.next} onClick={ProximaPagina}>
-            Próxima Página
-          </button>
+          {InfoApi.prev ? (
+            <button disabled={!InfoApi.prev} onClick={PaginaAnterior}>
+              Página Anterior
+            </button>
+          ) : (
+            <p></p>
+          )}
+
+          {InfoApi.next && (
+            <button disabled={!InfoApi.next} onClick={ProximaPagina}>
+              Próxima Página
+            </button>
+          )}
         </StyledPaginacao>
       </Container>
     </>
